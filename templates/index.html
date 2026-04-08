@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure File Sharing Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            color: white;
+            background: #2563eb;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .attack-btn {
+            background: #dc2626;
+        }
+
+        .verify-btn {
+            background: #16a34a;
+        }
+
+        .reset-btn {
+            background: #7c3aed;
+        }
+
+        .panel {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .panel h2 {
+            margin-top: 0;
+            color: #f8fafc;
+        }
+
+        .status-box {
+            padding: 14px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .status-success {
+            background: #14532d;
+            color: #dcfce7;
+        }
+
+        .status-warning {
+            background: #7c2d12;
+            color: #ffedd5;
+        }
+
+        .status-danger {
+            background: #7f1d1d;
+            color: #fee2e2;
+        }
+
+        .status-error {
+            background: #991b1b;
+            color: #fee2e2;
+        }
+
+        .status-reset {
+            background: #4c1d95;
+            color: #ede9fe;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .info-card {
+            background: #334155;
+            border-radius: 8px;
+            padding: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .info-card strong {
+            color: #facc15;
+        }
+
+        .mono {
+            font-family: Consolas, monospace;
+            font-size: 14px;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #94a3b8;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🔐 Secure File Sharing Dashboard</h1>
+    <div class="subtitle">RSA + SHA-256 + Digital Signature + Attack Simulation</div>
+
+    <div class="button-row">
+        <button onclick="callAPI('/generate_keys')">Generate Keys</button>
+        <button onclick="callAPI('/encrypt')">Encrypt + Sign</button>
+        <button class="attack-btn" onclick="callAPI('/attack')">Simulate Attack</button>
+        <button class="verify-btn" onclick="callAPI('/verify')">Verify File</button>
+        <button class="reset-btn" onclick="callAPI('/reset')">Reset Output</button>
+    </div>
+
+    <div class="panel">
+        <h2>System Status</h2>
+        <div id="statusArea" class="status-box">Waiting for action...</div>
+    </div>
+
+    <div class="panel">
+        <h2>Detailed Output</h2>
+        <div id="detailsArea" class="info-grid">
+            <div class="info-card">No output yet.</div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        Use sample file path: <span class="mono">input_files/sample.txt</span>
+    </div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
